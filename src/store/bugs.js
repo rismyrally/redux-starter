@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
+import { apiCallBegan } from "./api";
 
 let lastId = 0;
 
@@ -11,7 +12,10 @@ const slice = createSlice({
     lastFetch: null,
   },
   reducers: {
-    // actions =. action handlers
+    bugsReceived: (bugs, action) => {
+      bugs.list = action.payload.bugs;
+    },
+
     bugAssignedToUser: (bugs, action) => {
       const { bugId, userId } = action.payload;
       const index = bugs.list.findIndex((bug) => bug.id === bugId);
@@ -41,9 +45,20 @@ export const {
   bugRemoved,
   bugResolved,
   bugAssignedToUser,
+  bugsReceived,
 } = slice.actions;
 export default slice.reducer;
 
+// Action Creators
+const url = "/bugs";
+
+export const loadBugs = () =>
+  apiCallBegan({
+    url,
+    onSuccess: bugsReceived.type,
+  });
+
+// Selectors
 // Memoization
 // f(x) => y  { input: 1, output: 2 }
 // if list of bugs not changed => get unresolved bugs from the cache
