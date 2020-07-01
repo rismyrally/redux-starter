@@ -24,6 +24,8 @@ store.dispatch(bugRemoved({ id: 2 }));
 // unsubscribe();
 
 const unresolvedBugs = getUnresolvedBugs(store.getState());
+const x = getUnresolvedBugs(store.getState());
+const y = getUnresolvedBugs(store.getState());
 
-console.log(unresolvedBugs);
+console.log(x === y);
 // console.log(store.getState());
