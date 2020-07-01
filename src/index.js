@@ -17,13 +17,18 @@ const store = configureStore();
 //   console.log("Store changed!", store.getState());
 // });
 
-store.dispatch((dispatch, getState) => {
-  // Call an API
-  // When the promise is resolved => dispatch()
-  dispatch({ type: "bugsReceived", bugs: [1, 2, 3] });
-  console.log(getState());
-  // If the promise is rejected => dispatch()
+store.dispatch({
+  type: "error",
+  payload: { message: "An error occurred." },
 });
+
+// store.dispatch((dispatch, getState) => {
+//   // Call an API
+//   // When the promise is resolved => dispatch()
+//   dispatch({ type: "bugsReceived", bugs: [1, 2, 3] });
+//   console.log(getState());
+//   // If the promise is rejected => dispatch()
+// });
 
 // store.dispatch(userAdded({ name: "User 1" }));
 // store.dispatch(userAdded({ name: "User 2" }));
