@@ -34,5 +34,6 @@ export default slice.reducer;
 // if list of bugs not changed => get unresolved bugs from the cache
 export const getUnresolvedBugs = createSelector(
   (state) => state.entities.bugs,
-  (bugs) => bugs.filter((bug) => !bug.resolved)
+  (state) => state.entities.projects,
+  (bugs, projects) => bugs.filter((bug) => !bug.resolved)
 );
