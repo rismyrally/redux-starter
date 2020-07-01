@@ -6,10 +6,10 @@ import {
   getUnresolvedBugs,
   bugAssignedToUser,
   getBugsByUser,
+  loadBugs,
 } from "./store/bugs";
 import { projectAdded } from "./store/projects";
 import { userAdded } from "./store/users";
-import { loadBugs } from "./store/bugs";
 
 const store = configureStore();
 
