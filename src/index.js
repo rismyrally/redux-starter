@@ -15,6 +15,10 @@ const store = configureStore();
 
 store.dispatch(loadBugs());
 
+setTimeout(() => {
+  store.dispatch(loadBugs());
+}, 2000);
+
 // const unsubscribe =
 // store.subscribe(() => {
 //   console.log("Store changed!", store.getState());
