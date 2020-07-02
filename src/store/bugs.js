@@ -30,13 +30,18 @@ const slice = createSlice({
       bugs.list[index].userId = userId;
     },
 
+    // command - event
+    // addBug - bugAdded
     bugAdded: (bugs, action) => {
       bugs.list.push(action.payload);
     },
+
     bugRemoved: (bugs, action) => {
       const index = bugs.list.findIndex((bug) => bug.id === action.payload.id);
       bugs.list.splice(index, 1);
     },
+
+    // resolveBug (command) - bugResolved (event)
     bugResolved: (bugs, action) => {
       const index = bugs.list.findIndex((bug) => bug.id === action.payload.id);
       bugs.list[index].resolved = true;
@@ -83,7 +88,17 @@ export const addBug = (bug) =>
     onSuccess: bugAdded.type,
   });
 
-// Selectors
+export const resolveBug = (id) =>
+  apiCallBegan({
+    // /bugs
+    // PATCH /bugs/1
+    url: url + "/" + id,
+    method: "patch",
+    data: { resolved: true },
+    onSuccess: bugResolved.type,
+  });
+
+// Selector
 // Memoization
 // f(x) => y  { input: 1, output: 2 }
 // if list of bugs not changed => get unresolved bugs from the cache

@@ -8,14 +8,19 @@ import {
   getBugsByUser,
   loadBugs,
   addBug,
+  resolveBug,
 } from "./store/bugs";
 import { projectAdded } from "./store/projects";
 import { userAdded } from "./store/users";
 
 const store = configureStore();
 
-store.dispatch(addBug({ description: "a" }));
+// UI Layer
+store.dispatch(loadBugs());
 
+setTimeout(() => {
+  store.dispatch(resolveBug(3));
+}, 2000);
 // const unsubscribe =
 // store.subscribe(() => {
 //   console.log("Store changed!", store.getState());
