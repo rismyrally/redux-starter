@@ -9,6 +9,7 @@ import {
   loadBugs,
   addBug,
   resolveBug,
+  assignBugToUser,
 } from "./store/bugs";
 import { projectAdded } from "./store/projects";
 import { userAdded } from "./store/users";
@@ -19,7 +20,7 @@ const store = configureStore();
 store.dispatch(loadBugs());
 
 setTimeout(() => {
-  store.dispatch(resolveBug(3));
+  store.dispatch(assignBugToUser(1, 4));
 }, 2000);
 // const unsubscribe =
 // store.subscribe(() => {
