@@ -17,9 +17,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.21.1",
-    "immer": "^8.0.1",
+    "immer": "^9.0.6",
     "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
